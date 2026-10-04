@@ -1,8 +1,8 @@
 name: orbit-dashboard
-version: 0.2.0
+version: 0.4.0
 manifest_version: 2
 api_version: 1
-description: Use the approved ORBIT dashboard API to run Mac Studio ComfyUI jobs.
+description: Control ORBIT jobs and use account-scoped Hindsight and Obsidian memory on the Mac Studio.
 provides_tools:
   - orbit_status
   - orbit_list_workflows
@@ -15,6 +15,8 @@ provides_tools:
   - orbit_list_results
   - orbit_download_result
   - orbit_free_comfy_memory
+  - orbit_memory_status
+  - orbit_obsidian_save
 python_dependencies:
   - "keyring>=25,<26"
 requires_env:
@@ -23,4 +25,4 @@ requires_env:
   - name: ORBIT_DASHBOARD_ORIGIN
     description: "Exact browser origin allowed to pair with this PC"
 license: MIT
-tags: [comfyui, image-generation, video-generation, local-agent]
+tags: [comfyui, image-generation, video-generation, local-agent, obsidian, memory]

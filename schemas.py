@@ -52,3 +52,27 @@ FREE_COMFY_MEMORY = {
     "description": "Unload ComfyUI models and free Mac Studio memory. Admin only; refuses while any ComfyUI job is running or queued.",
     "parameters": {"type": "object", "properties": {}},
 }
+
+MEMORY_STATUS = {
+    "name": "orbit_memory_status",
+    "description": "Check whether this Hermes profile is configured for selective Obsidian capture. Hindsight status is managed by the official Hermes memory provider.",
+    "parameters": {"type": "object", "properties": {}},
+}
+
+OBSIDIAN_SAVE = {
+    "name": "orbit_obsidian_save",
+    "description": "Save a durable note to this user's configured Obsidian vault when the user explicitly asks to remember or document it. Never include passwords, API keys, tokens, secrets, or temporary chat.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "title": {"type": "string", "description": "Short stable Korean note title."},
+            "content": {"type": "string", "description": "Concise durable fact, decision, procedure, or project update."},
+            "score": {"type": "integer", "minimum": 0, "maximum": 100, "description": "Hermes' importance score. 80+ is filed directly, 60-79 goes to the review inbox."},
+            "category": {"type": "string", "enum": ["decision", "project", "system", "model", "person", "reference", "other"]},
+            "tags": {"type": "array", "items": {"type": "string"}},
+            "links": {"type": "array", "items": {"type": "string"}, "description": "Related Obsidian note names without brackets."},
+            "reason": {"type": "string", "description": "Short explanation of why this is durable enough to save."},
+        },
+        "required": ["title", "content", "score"],
+    },
+}
